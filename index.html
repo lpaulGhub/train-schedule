@@ -1,1 +1,148 @@
+<!doctype html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <title>Train Schedule</title>
+
+    <!-- firebase -->
+    <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
+    
+    <!-- moment -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.js"></script>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/flatly/bootstrap.min.css">
+
+    <!-- Font Awesome CSS Icons (For cool glyphicons) -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+ 
+    <!-- Style to fix the issue of text extending past panel length -->
+    <style>
+        .panel-body a {
+            word-break: break-all;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Main container -->
+    <div class="container">
+
+        <!-- Jumbotron for Title -->
+        <div class="jumbotron" style="background-color: #20315A ; color: white;">
+            <h1 class="text-center">
+                <strong><i class="fa fa-newspaper-o"></i> Train Schedule</strong>
+            </h1>
+            <h2 class="text-center">Choo Choooooooo</h2>
+        </div>
+
+        <!-- This row will handle train schedule -->
+        <div class="row">
+            <div class="col-sm-12">
+                <br>
+
+                <!-- This panel will hold train information -->
+                <div class="panel panel-primary">
+
+                    <!-- Panel Heading for train schedule -->
+                    <div class="panel-heading"
+                        <h3 class="panel-title">
+                            <strong><i class="fa fa-train"></i>&nbsp Current Train Schedule</strong>
+                        </h3>
+                    </div>
+
+                    <!-- This main panel will hold each of the trains -->
+                    <div class="panel-body">
+                        <div class="panel panel-default">
+
+                            <!-- Default panel contents -->
+                            <table class="table" id="train-table">
+                                <tr>
+                                    <th scope="col">Train Name</th>
+                                    <th scope="col">Destination</th>
+                                    <th scope="col">Frequency (min)</th>
+                                    <th scope="col">Next Arrival</th>
+                                    <th scope="col">Minutes Away</th>
+                                </tr>
+                                <!-- Output displayed here as <tr> -->
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Row for Train Input panel -->
+        <div class="row">
+            <div class="col-sm-12">
+                <br>
+                <!-- panel is for handling form data -->
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            <strong><i class="fa fa-train"></i>&nbsp Add Train</strong>
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+
+                        <!-- HTML Form for handling the inputs-->
+                        <form role="form">
+
+                            <!-- train name field -->
+                            <div class="form-group">
+                                <label for="trainName">Train Name</label>
+                                <input type="text" class="form-control" id="trainName">
+                            </div>
+
+                             <!-- train destination field -->
+                            <div class="form-group">
+                                <label for="destination">Destination</label>
+                                <input type="text" class="form-control" id="destination">
+                            </div>
+
+                            <!-- train time field -->
+                            <div class="form-group">
+                                <label for="firstTrain">First Train Time (HH:MM)</label>
+                                <input type="text" class="form-control" id="firstTrain">
+                            </div>
+
+                            <!-- train freqency field -->
+                            <div class="form-group">
+                                <label for="frequency">Frequency (min)</label>
+                                <input type="text" class="form-control" id="frequency">
+                            </div>
+
+                            <!-- submit button -->
+                            <button type="submit" class="btn btn-default" id="submit">Add Train</button>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="row">
+            <div class="col-sm-12">
+                <hr>
+                <h5 class="text-center">
+                    <small>Train Company 2018
+                        <i class="fa fa-train"></i>
+                    </small>
+                </h5>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- jQuery JS -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+
+    <!-- Code to the JavaScript File -->
+    <script src="assets/script.js"></script>
+
+</body>
+
+</html>
