@@ -10,7 +10,7 @@ Font Awesome is a font and icon toolkit based on CSS and LESS.
 https://fontawesome.com
 https://www.w3schools.com/icons/fontawesome_icons_intro.asp
 
-## Time managment Library
+## Time Managment Library
 Parse, validate, manipulate, and display dates and times in JavaScript.
 https://momentjs.com
 https://devhints.io/moment
