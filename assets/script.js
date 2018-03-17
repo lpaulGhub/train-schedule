@@ -21,6 +21,7 @@
   var arrival;
 
   // on click event 
+  // gets form data and pushes it to database
   $("#submit").on("click", function (event) {
 
     event.preventDefault();
@@ -44,11 +45,9 @@
 
 });
 
-// child added function
-// passes callback function
-// snapshot becomes event object
-// "grab everything on the root level when a child is added. 
-// Then, pass that in to snapshot. Then, once it is added, it will grab values for each child"
+// database reference,
+// checks for child added activity in database
+// then adds data to form table
 database.ref().on("child_added", function (snapshot) {
 
     console.log(snapshot.val());
@@ -58,32 +57,32 @@ database.ref().on("child_added", function (snapshot) {
     // console.log(snapshot.val().frequency);
 
     // log object to the console.
-    console.log(snapshot.val());
+    // console.log(snapshot.val());
 
     // First Time (pushed back 1 year to make sure it comes before current time)
     var initialTimeConverted = moment(snapshot.val().firstTrain, "hh:mm").subtract(1, "years");
-    console.log(initialTimeConverted);
+    // console.log(initialTimeConverted);
 
     // Current Time
     var currentTime = moment();
-    console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
+    // console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
 
     // Calculate time difference
     var diffTime = moment().diff(moment(initialTimeConverted), "minutes");
-    console.log("DIFFERENCE IN TIME: " + diffTime);
+    // console.log("DIFFERENCE IN TIME: " + diffTime);
 
     // Time remaining
     var timeRemainder = diffTime % snapshot.val().frequency;
-    console.log("TIME REMAINDER = " + timeRemainder);
+    // console.log("TIME REMAINDER = " + timeRemainder);
 
     // Next Train
     arrival = moment().add(minAway, "minutes");
     // arrival = moment(arrival).format("hh:mm");
-    console.log("ARRIVAL TIME: " + moment(arrival).format("hh:mm"));
+    // console.log("ARRIVAL TIME: " + moment(arrival).format("hh:mm"));
 
     // Minutes Until Train
     minAway = snapshot.val().frequency - timeRemainder;
-    console.log("MINUTES UNTIL NEXT TRAIN: " + minAway);
+    // console.log("MINUTES UNTIL NEXT TRAIN: " + minAway);
 
     // train table 
     var trainInfo = $('<tr>');
